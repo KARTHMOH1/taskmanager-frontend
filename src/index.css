@@ -1,0 +1,208 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* <-- changed from flex-start */
+  padding: 40px;
+  text-align: center; /* center text */
+}
+
+
+.container {
+  background: #ffffffdd;
+  padding: 2.5rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #2b2b2b;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+form, ul {
+  align-items: center;
+  text-align: center;
+}
+
+
+input {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: #f0f0f3;
+  box-shadow: inset 4px 4px 10px #d1d9e6, inset -4px -4px 10px #ffffff;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: inset 3px 3px 8px #d1d9e6, inset -3px -3px 8px #ffffff,
+              0 0 0 2px #007bff55;
+}
+
+button {
+  padding: 12px 20px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* .description {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #555;
+} */
+
+
+li {
+  background: #ffffff;
+  margin: 10px 0;
+  padding: 16px 20px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+li:hover {
+  background-color: #f9f9f9;
+  transform: scale(1.01);
+}
+
+li span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+li button {
+  margin-left: 10px;
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+li button:first-of-type {
+  background-color: #48c774; /* Edit: green */
+}
+
+li button:hover {
+  opacity: 0.9;
+}
+
+.search {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 1.5rem auto;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f0f0f3;
+  box-shadow: inset 4px 4px 10px #d1d9e6, inset -4px -4px 10px #ffffff;
+  border: none;
+  font-size: 1rem;
+}
+
+/* Styling for 'No tasks found' message */
+.no-tasks {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #666;
+  margin-top: 2rem;
+}
+
+/* Description block styling under each task */
+/* Style for task description */
+.description {
+  text-align: left;
+  margin-top: 10px;
+  padding: 10px;
+  margin-left: 5px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.description h4 {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.description p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.description em {
+  color: #888;
+  font-style: italic;
+}
