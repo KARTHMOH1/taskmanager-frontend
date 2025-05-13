@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './index.css';
 
-const API_URL = 'https://taskmanager-backend-hae6.onrender.com/tasks'
+const API_URL = 'https://taskmanager-backend-hae6.onrender.com/tasks';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -15,14 +15,14 @@ function App() {
   }, []);
 
   const fetchTasks = async () => {
-  try {
-    const res = await axios.get(API_URL);
-    console.log('Fetched Tasks:', res.data); // Log response
-    setTasks(res.data);
-  } catch (error) {
-    console.error('Error fetching tasks:', error);
-  }
-};
+    try {
+      const res = await axios.get(API_URL);
+      console.log('Fetched Tasks:', res.data);
+      setTasks(res.data);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,28 +74,50 @@ function App() {
           placeholder="📄 Description"
           value={form.description}
           onChange={(e) => setForm({ ...form, description: e.target.value })}
-          required
         />
         <button type="submit">
           {editId ? '💾 Update Task' : '➕ Add Task'}
         </button>
+        {editId && (
+          <button
+            type="button"
+            onClick={() => {
+              setForm({ title: '', description: '' });
+              setEditId(null);
+            }}
+          >
+            ❌ Cancel
+          </button>
+        )}
       </form>
 
-      <ul>
-  {filteredTasks.map((task, index) => (
-    <li key={task.id}>
-      <span>
-        {index + 1}. ✅ <strong>{task.title}</strong>
-      </span>
-      <p className="description">📄 {task.description}</p>
-      <div className="actions">
-        <button onClick={() => handleEdit(task)}>✏️ Edit</button>
-        <button onClick={() => handleDelete(task.id)}>🗑️ Delete</button>
-      </div>
-    </li>
-  ))}
-</ul>
-
+      {filteredTasks.length === 0 ? (
+        <p className="no-tasks">📌 No tasks found</p>
+      ) : (
+        <ul>
+          {filteredTasks.map((task, index) => (
+            <li key={task.id}>
+              <div>
+                <span>
+                  {index + 1}. ✅ <strong>{task.title}</strong>
+                </span>
+                <div className="description">
+                  <h4>📄 Description:</h4>
+                  {task.description ? (
+                    <p>{task.description}</p>
+                  ) : (
+                    <p><em>📌 No description provided</em></p>
+                  )}
+                </div>
+              </div>
+              <div className="actions">
+                <button onClick={() => handleEdit(task)}>✏️ Edit</button>
+                <button onClick={() => handleDelete(task.id)}>🗑️ Delete</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
